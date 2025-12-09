@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Final_Grp6_PROG3340")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13c44ee0a0337cc2fdd5e7af13599d78e3264deb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0180672c0b57cb4ad39c2e11c589e58cd5f1a4f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Final_Grp6_PROG3340")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Final_Grp6_PROG3340")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
