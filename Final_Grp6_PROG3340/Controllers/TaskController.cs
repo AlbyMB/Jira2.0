@@ -26,7 +26,11 @@ namespace Final_Grp6_PROG3340.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskById(int id)
         {
-            return Ok(await _taskService.GetByIdAsync(id));
+            if(await _taskService.GetByIdAsync(id) is not TaskItem task)
+            {
+                return NotFound();
+            }
+            return Ok(task);
         }
 
         [HttpPost]
