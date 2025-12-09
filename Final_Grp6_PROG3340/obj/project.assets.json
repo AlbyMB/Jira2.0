@@ -1342,11 +1342,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dell\\Desktop\\Final_Grp6_PROG3340\\Final_Grp6_PROG3340.csproj",
+      "projectUniqueName": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340\\Final_Grp6_PROG3340.csproj",
       "projectName": "Final_Grp6_PROG3340",
-      "projectPath": "C:\\Users\\dell\\Desktop\\Final_Grp6_PROG3340\\Final_Grp6_PROG3340.csproj",
+      "projectPath": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340\\Final_Grp6_PROG3340.csproj",
       "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dell\\Desktop\\Final_Grp6_PROG3340\\obj\\",
+      "outputPath": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
