@@ -1,0 +1,63 @@
+## Build artifacts
+bin/
+obj/
+out/
+artifacts/
+
+## User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.code-workspace
+
+## ASP.NET / .NET
+*.psess
+*.vsp
+*.pidb
+*.svclog
+*.suo
+
+## Resharper / JetBrains Rider
+_ReSharper*/
+*.[Rr]e[Ss]harper
+.idea/
+*.DotSettings.user
+
+## Packages
+packages/
+*.nupkg
+*.snupkg
+
+## Logs
+*.log
+
+## Publish outputs
+wwwroot/lib/
+wwwroot/dist/
+node_modules/
+
+## Entity Framework
+Migrations/obj/
+
+## Generated files
+*.generated.cs
+*.g.cs
+*.g.i.cs
+
+## Cache
+*.cache
+*.dbmdl
+
+## Azure
+PublishScripts/
+*.pubxml
+*.pubxml.user
+
+## OS junk
+.DS_Store
+Thumbs.db

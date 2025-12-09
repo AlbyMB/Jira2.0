@@ -34,6 +34,8 @@ builder.Services
 		options.Authority = "https://accounts.google.com";
 		options.ResponseType = "code";
 		options.SaveTokens = true;
+		options.CallbackPath = "/signin-oidc"; // This is the critical missing piece
+		options.SignedOutCallbackPath = "/signout-callback-oidc";
 		options.Scope.Add("openid");
 		options.Scope.Add("profile");
 		options.Scope.Add("email");
@@ -41,6 +43,15 @@ builder.Services
 		options.ClaimActions.MapJsonKey("email", "email");
 		options.TokenValidationParameters.NameClaimType = "name";
 		options.TokenValidationParameters.RoleClaimType = "role";
+		options.Events = new OpenIdConnectEvents
+		{
+			OnRemoteFailure = context =>
+			{
+				context.Response.Redirect("/Auth/Login");
+				context.HandleResponse();
+				return Task.CompletedTask;
+			}
+		};
 	});
 
 // App services
