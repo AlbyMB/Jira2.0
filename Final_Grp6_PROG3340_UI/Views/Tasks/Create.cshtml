@@ -1,0 +1,85 @@
+@model Final_Grp6_PROG3340_UI.Models.ViewModels.TaskViewModel
+@{
+    ViewData["Title"] = "Create Task";
+    var users = ViewBag.Users as List<Final_Grp6_PROG3340_UI.Models.ViewModels.UserViewModel> ?? new List<Final_Grp6_PROG3340_UI.Models.ViewModels.UserViewModel>();
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Board">Task Board</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create Task</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="bi bi-plus-circle"></i> Create New Task</h3>
+                </div>
+                <div class="card-body">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Title <span class="text-danger">*</span></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter task title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Enter task description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Status" class="form-label">Status <span class="text-danger">*</span></label>
+                                <select asp-for="Status" class="form-select" asp-items="Html.GetEnumSelectList<Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus>()">
+                                    <option value="">-- Select Status --</option>
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="AssignedToId" class="form-label">Assign To</label>
+                                <select asp-for="AssignedToId" class="form-select">
+                                    <option value="">-- Unassigned --</option>
+                                    @foreach (var user in users)
+                                    {
+                                        <option value="@user.Id">@user.Name (@user.Username)</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="AssignedToId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Create Task
+                            </button>
+                            <a asp-action="Board" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

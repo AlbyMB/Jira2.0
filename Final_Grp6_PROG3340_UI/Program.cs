@@ -1,7 +1,58 @@
+using Final_Grp6_PROG3340_UI.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient("API", client =>
+{
+	client.BaseAddress = new Uri("https://localhost:7044/api/"); // your API's base URL
+});
+
+
+builder.Services
+	.AddAuthentication(options =>
+	{
+		options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+		options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+	})
+	.AddCookie(options =>
+	{
+		options.Cookie.SameSite = SameSiteMode.None;
+		options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+		options.LoginPath = "/Auth/Login";
+		options.LogoutPath = "/Auth/Logout";
+	})
+	.AddOpenIdConnect(options =>
+	{
+		options.ClientId = "24183777669-dchkr9lco9rhk04v4pa78dvrcf00oa4s.apps.googleusercontent.com";
+		options.ClientSecret = "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";
+		options.Authority = "https://accounts.google.com";
+		options.ResponseType = "code";
+		options.SaveTokens = true;
+		options.Scope.Add("openid");
+		options.Scope.Add("profile");
+		options.Scope.Add("email");
+		options.GetClaimsFromUserInfoEndpoint = true;
+		options.ClaimActions.MapJsonKey("email", "email");
+		options.TokenValidationParameters.NameClaimType = "name";
+		options.TokenValidationParameters.RoleClaimType = "role";
+	});
+
+// App services
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<JwtService>();
+builder.Services.AddScoped<ApiClient>();
+
+// API Services
+builder.Services.AddScoped<AuthApiService>();
+builder.Services.AddScoped<TaskApiService>();
+builder.Services.AddScoped<UserApiService>();
+
 
 var app = builder.Build();
 
@@ -18,10 +69,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Tasks}/{action=Board}/{id?}");
 
 app.Run();

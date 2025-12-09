@@ -1,0 +1,124 @@
+@model Final_Grp6_PROG3340_UI.Models.TaskBoardViewModel
+@{
+    ViewData["Title"] = "Task Board";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col">
+            <h1 class="display-6">
+                <i class="bi bi-kanban"></i> Task Board
+            </h1>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create Task
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row kanban-board">
+        <!-- To Do Column -->
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header bg-secondary text-white">
+                    <h5>To Do</h5>
+                    <span class="badge bg-light text-dark">@Model.ToDoTasks.Count</span>
+                </div>
+                <div class="kanban-items">
+                    @foreach (var task in Model.ToDoTasks)
+                    {
+                        <partial name="_TaskCard" model="task" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Column -->
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header bg-primary text-white">
+                    <h5>Development</h5>
+                    <span class="badge bg-light text-dark">@Model.DevelopmentTasks.Count</span>
+                </div>
+                <div class="kanban-items">
+                    @foreach (var task in Model.DevelopmentTasks)
+                    {
+                        <partial name="_TaskCard" model="task" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Column -->
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header bg-warning text-dark">
+                    <h5>Review</h5>
+                    <span class="badge bg-light text-dark">@Model.ReviewTasks.Count</span>
+                </div>
+                <div class="kanban-items">
+                    @foreach (var task in Model.ReviewTasks)
+                    {
+                        <partial name="_TaskCard" model="task" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Merge Column -->
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header bg-info text-white">
+                    <h5>Merge</h5>
+                    <span class="badge bg-light text-dark">@Model.MergeTasks.Count</span>
+                </div>
+                <div class="kanban-items">
+                    @foreach (var task in Model.MergeTasks)
+                    {
+                        <partial name="_TaskCard" model="task" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Done Column -->
+        <div class="col">
+            <div class="kanban-column">
+                <div class="kanban-header bg-success text-white">
+                    <h5>Done</h5>
+                    <span class="badge bg-light text-dark">@Model.DoneTasks.Count</span>
+                </div>
+                <div class="kanban-items">
+                    @foreach (var task in Model.DoneTasks)
+                    {
+                        <partial name="_TaskCard" model="task" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Placeholder for future SignalR real-time updates
+        // TODO: Implement SignalR connection and listen for task updates
+    </script>
+}

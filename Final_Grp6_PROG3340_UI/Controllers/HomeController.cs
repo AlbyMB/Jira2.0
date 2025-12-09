@@ -15,7 +15,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Board", "Tasks");
         }
 
         public IActionResult Privacy()

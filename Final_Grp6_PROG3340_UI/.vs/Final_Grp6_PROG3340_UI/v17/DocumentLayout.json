@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\services\\userapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:services\\userapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|c:\\users\\dell\\desktop\\final_grp6\\final_grp6_prog3340_ui\\services\\authapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B1D1369-CDF8-4269-8C74-A9F05AC7CB22}|Final_Grp6_PROG3340_UI.csproj|solutionrelative:services\\authapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +34,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthApiService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Services\\AuthApiService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthApiService.cs",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Services\\AuthApiService.cs",
+              "RelativeToolTip": "Services\\AuthApiService.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:22:34.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:20:06.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserApiService.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Services\\UserApiService.cs",
+              "RelativeDocumentMoniker": "Services\\UserApiService.cs",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Services\\UserApiService.cs",
+              "RelativeToolTip": "Services\\UserApiService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:18:07.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAtwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:17:22.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Register.cshtml",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAADQAAAAAAAAAAAAtwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T22:12:07.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T22:10:24.637Z",
+              "EditorCaption": ""
             }
           ]
         }

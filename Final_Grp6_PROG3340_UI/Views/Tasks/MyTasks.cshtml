@@ -1,0 +1,85 @@
+@model List<Final_Grp6_PROG3340_UI.Models.ViewModels.TaskViewModel>
+@{
+    ViewData["Title"] = "My Tasks";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <h1 class="display-6">
+                <i class="bi bi-person-badge"></i> My Tasks
+            </h1>
+            <p class="text-muted">Tasks created by you</p>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create Task
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> You haven't created any tasks yet.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var task in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a asp-action="Details" asp-route-id="@task.Id" class="text-decoration-none">
+                                    @task.Title
+                                </a>
+                            </h5>
+                            
+                            @if (!string.IsNullOrEmpty(task.Description))
+                            {
+                                <p class="card-text text-muted small">
+                                    @(task.Description.Length > 100 ? task.Description.Substring(0, 100) + "..." : task.Description)
+                                </p>
+                            }
+
+                            <div class="mb-2">
+                                <span class="badge bg-@GetStatusBadgeColor(task.Status)">
+                                    @task.Status
+                                </span>
+                            </div>
+
+                            <p class="card-text small">
+                                <i class="bi bi-person"></i> <strong>Assigned:</strong> @(task.AssignedToName ?? "Unassigned")
+                            </p>
+                            <p class="card-text small text-muted">
+                                <i class="bi bi-clock"></i> @task.CreatedAt.ToString("MMM dd, yyyy")
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-sm btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@functions {
+    string GetStatusBadgeColor(Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus status)
+    {
+        return status switch
+        {
+            Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus.ToDo => "secondary",
+            Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus.Development => "primary",
+            Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus.Review => "warning",
+            Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus.Merge => "info",
+            Final_Grp6_PROG3340_UI.Models.ViewModels.TaskStatus.Done => "success",
+            _ => "secondary"
+        };
+    }
+}
