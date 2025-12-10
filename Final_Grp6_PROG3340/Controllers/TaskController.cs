@@ -25,30 +25,60 @@ namespace Final_Grp6_PROG3340.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTasks()
         {
-            return Ok(await _taskService.GetAllAsync());
+            if (!_cache.TryGetValue("all_tasks", out List<TaskItem>? tasks))
+            {
+                Response.Headers.Append("X-Cache", "MISS");
+                await Task.Delay(2000);
+                tasks = (List<TaskItem>?)await _taskService.GetAllAsync();
+                if (tasks is null)
+                {
+                    return NotFound();
+                }
+                _cache.Set("all_tasks", tasks, new MemoryCacheEntryOptions
+                {
+                    SlidingExpiration = TimeSpan.FromMinutes(5)
+                });
+                return Ok(tasks);
+            }
+            else
+            {
+                Response.Headers.Append("X-Cache", "HIT");
+                if (tasks is null)
+                {
+                    return NotFound();
+                }
+                return Ok(tasks);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskById(int id)
         {
-            const string cacheKey = $"task_{id}"
-            if(!_cache.TryGetValue(cacheKey, out Task<IActionResult> task))
+            string cacheKey = $"task_{id}";
+            if(!_cache.TryGetValue(cacheKey, out TaskItem? task))
             {
-                Response.Headers.Add("X-Cache", "MISS");
-                // delay to simulate slow database call
-                await Task.Delay(2000); // 2 seconds delay
-                if (await _taskService.GetByIdAsync(id) is not TaskItem task)
+                Response.Headers.Append("X-Cache", "MISS");
+                await Task.Delay(2000);
+                task = await _taskService.GetByIdAsync(id);
+                if (task is null)
                 {
                     return NotFound();
                 }
-                // Cache for 5 minutes
-                _cache.Set(cacheKey, task, TimeSpan.FromMinutes(5));
+                _cache.Set(cacheKey, task, new MemoryCacheEntryOptions
+                {
+                    SlidingExpiration = TimeSpan.FromMinutes(5)
+                });
+                return Ok(task);
             }
             else
             {
-                Response.Headers.Add("X-Cache", "HIT");
+                Response.Headers.Append("X-Cache", "HIT");
+                if (task is null)
+                {
+                    return NotFound();
+                }
+                return Ok(task);
             }
-            return Ok(task);
         }
 
         [HttpPost]
@@ -60,11 +90,7 @@ namespace Final_Grp6_PROG3340.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskItem task)
         {
-            //if (_cache.TryGetValue($"task_{id}")) // check the cache for this task id
-            //{
-            // this task exists in cache, so remove it
             _cache.Remove($"task_{id}");
-            //}
             return Ok(await _taskService.UpdateAsync(task));
         }
 
@@ -88,32 +114,6 @@ namespace Final_Grp6_PROG3340.Controllers
         public async Task<IActionResult> GetAssignedTasks()
         {
             return Ok(await _taskService.GetByAssigneeAsync(0));
-        }
-
-        // In-memory caching
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            // Try to get products from cache
-            if (!_cache.TryGetValue("products", out List<Product> products))
-            {
-                // Simulate expensive DB operation
-                await Task.Delay(2000); // 2 seconds delay
-                products = await _context.Products.ToListAsync();
-                _cache.Set("products", products, TimeSpan.FromMinutes(5));
-            }
-            return Ok(products);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Add(Product product)
-        {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-
-            // Invalidate cache
-            _cache.Remove("products"); // need to remove cache so that data is up-to-date
-            return CreatedAtAction(nameof(GetAll), new { id = product.Id }, product);
         }
     }
 }

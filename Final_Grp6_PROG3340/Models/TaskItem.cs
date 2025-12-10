@@ -31,5 +31,10 @@
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? ArchivedAt { get; set; }
-	}
+
+        public static implicit operator Task<object>(TaskItem? v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

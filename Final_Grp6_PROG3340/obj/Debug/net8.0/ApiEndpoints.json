@@ -2,7 +2,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "GetAllTasks",
-    "RelativePath": "api/Task",
+    "RelativePath": "api/tasks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -12,7 +12,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "CreateTask",
-    "RelativePath": "api/Task",
+    "RelativePath": "api/tasks",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -28,7 +28,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "GetTaskById",
-    "RelativePath": "api/Task/{id}",
+    "RelativePath": "api/tasks/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -44,7 +44,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "UpdateTask",
-    "RelativePath": "api/Task/{id}",
+    "RelativePath": "api/tasks/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -65,7 +65,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "DeleteTask",
-    "RelativePath": "api/Task/{id}",
+    "RelativePath": "api/tasks/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -81,7 +81,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "GetAssignedTasks",
-    "RelativePath": "api/Task/assigned",
+    "RelativePath": "api/tasks/assigned",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -91,7 +91,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.TaskController",
     "Method": "GetMyTasks",
-    "RelativePath": "api/Task/my",
+    "RelativePath": "api/tasks/my",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -101,7 +101,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.UserController",
     "Method": "GetAllUsers",
-    "RelativePath": "api/User",
+    "RelativePath": "api/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -111,7 +111,7 @@
   {
     "ContainingType": "Final_Grp6_PROG3340.Controllers.UserController",
     "Method": "GetUserById",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/users/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

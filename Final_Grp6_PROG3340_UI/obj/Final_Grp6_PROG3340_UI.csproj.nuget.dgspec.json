@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj": {}
+    "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj": {
+    "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj",
+        "projectUniqueName": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj",
         "projectName": "Final_Grp6_PROG3340_UI",
-        "projectPath": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj",
-        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dell\\Desktop\\Final_Grp6\\Final_Grp6_PROG3340_UI\\obj\\",
+        "projectPath": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340_UI\\Final_Grp6_PROG3340_UI.csproj",
+        "packagesPath": "C:\\Users\\Owen\\.nuget\\packages\\",
+        "outputPath": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340_UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Owen\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
