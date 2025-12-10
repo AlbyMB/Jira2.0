@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|solutionrelative:controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|c:\\school\\level 5\\enterprise applications developement\\final\\project\\jira2.0\\final_grp6_prog3340\\uofw\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|solutionrelative:uofw\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|c:\\school\\level 5\\enterprise applications developement\\final\\project\\jira2.0\\final_grp6_prog3340\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|c:\\school\\level 5\\enterprise applications developement\\final\\project\\jira2.0\\final_grp6_prog3340\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|solutionrelative:services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|c:\\school\\level 5\\enterprise applications developement\\final\\project\\jira2.0\\final_grp6_prog3340\\uofw\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1C24817-BB00-4BA2-9A02-DD3FD58324B7}|Final_Grp6_PROG3340.csproj|solutionrelative:uofw\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T22:51:56.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340\\UOfW\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "UOfW\\UnitOfWork.cs",
@@ -45,7 +62,7 @@
               "RelativeDocumentMoniker": "Services\\TaskService.cs",
               "ToolTip": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340\\Services\\TaskService.cs",
               "RelativeToolTip": "Services\\TaskService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-09T22:05:13.607Z",
               "EditorCaption": ""
@@ -58,7 +75,7 @@
               "RelativeDocumentMoniker": "Controllers\\TaskController.cs",
               "ToolTip": "C:\\School\\Level 5\\Enterprise Applications Developement\\Final\\project\\Jira2.0\\Final_Grp6_PROG3340\\Controllers\\TaskController.cs",
               "RelativeToolTip": "Controllers\\TaskController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-09T21:43:22.912Z",
               "EditorCaption": ""

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Final_Grp6_PROG3340.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
