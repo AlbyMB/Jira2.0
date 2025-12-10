@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Final_Grp6_PROG3340.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/tasks")]
     public class TaskController : ControllerBase
     {
         private readonly ITaskService _taskService;
