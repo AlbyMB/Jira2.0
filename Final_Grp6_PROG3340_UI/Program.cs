@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient("API", client =>
 {
-	client.BaseAddress = new Uri("https://localhost:7044/api/"); // your API's base URL
+	client.BaseAddress = new Uri("https://localhost:7111/api/"); // your API's base URL
 });
 
 
