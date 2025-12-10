@@ -9,7 +9,7 @@ namespace Final_Grp6_PROG3340_UI.Services
 	{
 		private readonly IHttpClientFactory _factory;
 		private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly ILogger<ApiClient> _logger;
+		private readonly ILogger<ApiClient> _logger;
 		private readonly JwtService _jwtService;
 
 		public ApiClient(IHttpClientFactory factory, IHttpContextAccessor httpContextAccessor, ILogger<ApiClient> logger, JwtService jwtService)
@@ -24,6 +24,9 @@ namespace Final_Grp6_PROG3340_UI.Services
 		{
 			var client = _factory.CreateClient("API");
 
+			// Log the base address for debugging
+			_logger.LogInformation("API Client Base Address: {BaseAddress}", client.BaseAddress);
+
 			var user = _httpContextAccessor.HttpContext?.User;
 			if (user?.Identity?.IsAuthenticated == true)
 			{
@@ -31,11 +34,16 @@ namespace Final_Grp6_PROG3340_UI.Services
 				{
 					var token = _jwtService.GenerateToken(user);
 					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+					_logger.LogDebug("JWT token added to request header");
 				}
 				catch (Exception ex)
 				{
 					_logger.LogError(ex, "Failed to generate JWT for API call.");
 				}
+			}
+			else
+			{
+				_logger.LogDebug("User not authenticated, no JWT token added");
 			}
 			return client;
 		}
@@ -43,43 +51,98 @@ namespace Final_Grp6_PROG3340_UI.Services
 		public async System.Threading.Tasks.Task<HttpResponseMessage> PostAsync<T>(string uri, T payload)
 		{
 			var client = CreateClient();
-			var resp = await client.PostAsJsonAsync(uri, payload);
-			return await LogAndBufferAsync(resp, uri, "POST");
+			var fullUrl = new Uri(client.BaseAddress!, uri).ToString();
+			_logger.LogInformation("POST Request to: {FullUrl}", fullUrl);
+
+			try
+			{
+				var resp = await client.PostAsJsonAsync(uri, payload);
+				return await LogAndBufferAsync(resp, fullUrl, "POST");
+			}
+			catch (HttpRequestException ex)
+			{
+				_logger.LogError(ex, "HTTP Request Exception for POST {FullUrl}", fullUrl);
+				throw;
+			}
 		}
 
 		public async System.Threading.Tasks.Task<HttpResponseMessage> PutAsync<T>(string uri, T payload)
 		{
 			var client = CreateClient();
-			var resp = await client.PutAsJsonAsync(uri, payload);
-			return await LogAndBufferAsync(resp, uri, "PUT");
+			var fullUrl = new Uri(client.BaseAddress!, uri).ToString();
+			_logger.LogInformation("PUT Request to: {FullUrl}", fullUrl);
+
+			try
+			{
+				var resp = await client.PutAsJsonAsync(uri, payload);
+				return await LogAndBufferAsync(resp, fullUrl, "PUT");
+			}
+			catch (HttpRequestException ex)
+			{
+				_logger.LogError(ex, "HTTP Request Exception for PUT {FullUrl}", fullUrl);
+				throw;
+			}
 		}
 
 		public async System.Threading.Tasks.Task<HttpResponseMessage> PatchAsync<T>(string uri, T payload)
 		{
 			var client = CreateClient();
-			var req = new HttpRequestMessage(new HttpMethod("PATCH"), uri)
+			var fullUrl = new Uri(client.BaseAddress!, uri).ToString();
+			_logger.LogInformation("PATCH Request to: {FullUrl}", fullUrl);
+
+			try
 			{
-				Content = JsonContent.Create(payload)
-			};
-			var resp = await client.SendAsync(req);
-			return await LogAndBufferAsync(resp, uri, "PATCH");
+				var req = new HttpRequestMessage(new HttpMethod("PATCH"), uri)
+				{
+					Content = JsonContent.Create(payload)
+				};
+				var resp = await client.SendAsync(req);
+				return await LogAndBufferAsync(resp, fullUrl, "PATCH");
+			}
+			catch (HttpRequestException ex)
+			{
+				_logger.LogError(ex, "HTTP Request Exception for PATCH {FullUrl}", fullUrl);
+				throw;
+			}
 		}
 
 		public async System.Threading.Tasks.Task<HttpResponseMessage> GetAsync(string uri)
 		{
 			var client = CreateClient();
-			var resp = await client.GetAsync(uri);
-			return await LogAndBufferAsync(resp, uri, "GET");
+			var fullUrl = new Uri(client.BaseAddress!, uri).ToString();
+			_logger.LogInformation("GET Request to: {FullUrl}", fullUrl);
+
+			try
+			{
+				var resp = await client.GetAsync(uri);
+				return await LogAndBufferAsync(resp, fullUrl, "GET");
+			}
+			catch (HttpRequestException ex)
+			{
+				_logger.LogError(ex, "HTTP Request Exception for GET {FullUrl}", fullUrl);
+				throw;
+			}
 		}
 
 		public async System.Threading.Tasks.Task<HttpResponseMessage> DeleteAsync(string uri)
 		{
 			var client = CreateClient();
-			var resp = await client.DeleteAsync(uri);
-			return await LogAndBufferAsync(resp, uri, "DELETE");
+			var fullUrl = new Uri(client.BaseAddress!, uri).ToString();
+			_logger.LogInformation("DELETE Request to: {FullUrl}", fullUrl);
+
+			try
+			{
+				var resp = await client.DeleteAsync(uri);
+				return await LogAndBufferAsync(resp, fullUrl, "DELETE");
+			}
+			catch (HttpRequestException ex)
+			{
+				_logger.LogError(ex, "HTTP Request Exception for DELETE {FullUrl}", fullUrl);
+				throw;
+			}
 		}
 
-		private async System.Threading.Tasks.Task<HttpResponseMessage> LogAndBufferAsync(HttpResponseMessage response, string uri, string method)
+		private async System.Threading.Tasks.Task<HttpResponseMessage> LogAndBufferAsync(HttpResponseMessage response, string fullUrl, string method)
 		{
 			string body = string.Empty;
 			try
@@ -88,12 +151,22 @@ namespace Final_Grp6_PROG3340_UI.Services
 			}
 			catch (Exception ex)
 			{
-				_logger.LogError(ex, "Error reading response body for {Method} {Uri}", method, uri);
+				_logger.LogError(ex, "Error reading response body for {Method} {FullUrl}", method, fullUrl);
 			}
 
-			_logger.LogInformation("API {Method} {Uri} => {(Status)} {Reason}\n{Body}", method, uri, (int)response.StatusCode, response.ReasonPhrase, body);
-			Debug.WriteLine($"API {method} {uri} => {(int)response.StatusCode} {response.ReasonPhrase}\n{body}");
-			Console.WriteLine($"API {method} {uri} => {(int)response.StatusCode} {response.ReasonPhrase}");
+			var statusCode = (int)response.StatusCode;
+
+			if (response.IsSuccessStatusCode)
+			{
+				_logger.LogInformation("? API {Method} {FullUrl} => {StatusCode} {Reason}", method, fullUrl, statusCode, response.ReasonPhrase);
+			}
+			else
+			{
+				_logger.LogWarning("? API {Method} {FullUrl} => {StatusCode} {Reason}\nResponse Body: {Body}", method, fullUrl, statusCode, response.ReasonPhrase, body);
+			}
+
+			Debug.WriteLine($"API {method} {fullUrl} => {statusCode} {response.ReasonPhrase}\n{body}");
+			Console.WriteLine($"API {method} {fullUrl} => {statusCode} {response.ReasonPhrase}");
 
 			// Re-buffer content so callers can read it again
 			if (response.Content != null)
