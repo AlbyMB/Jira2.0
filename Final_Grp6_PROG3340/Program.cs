@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//used for caching
+builder.Services.AddMemoryCache();
+
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("DefaultDb"));
 
