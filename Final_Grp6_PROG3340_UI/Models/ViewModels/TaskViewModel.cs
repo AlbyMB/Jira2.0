@@ -18,7 +18,7 @@ namespace Final_Grp6_PROG3340_UI.Models.ViewModels
         public int? AssignedToId { get; set; }
         public string? AssignedToName { get; set; }
 
-        public int CreatedById { get; set; }
+        public int? CreatedById { get; set; }
         public string? CreatedByName { get; set; }
 
         public bool IsArchived { get; set; }

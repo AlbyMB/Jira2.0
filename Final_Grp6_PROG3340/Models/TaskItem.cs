@@ -18,7 +18,7 @@
 
         public TaskStatus Status { get; set; } = TaskStatus.ToDo;
 
-        public int CreatedById { get; set; }
+        public int? CreatedById { get; set; }
         public User CreatedBy { get; set; } = default!;
 
         public int? AssignedToId { get; set; }

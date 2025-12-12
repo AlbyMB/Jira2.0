@@ -19,27 +19,32 @@ namespace Final_Grp6_PROG3340_UI.Controllers
             _logger = logger;
         }
 
-        // Task Board (Kanban View)
-        [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> Board()
-        {
-            var tasks = await _taskService.GetAllTasksAsync();
+		// Task Board (Kanban View)
+		[HttpGet]
+		public async Task<IActionResult> Board()
+		{
+			// Get only tasks relevant to the user (created by them or assigned to them)
+			var myTasks = await _taskService.GetMyTasksAsync();
+			var assignedTasks = await _taskService.GetAssignedTasksAsync();
 
-            var boardModel = new TaskBoardViewModel
-            {
-                ToDoTasks = tasks.Where(t => t.Status == TaskStatus.ToDo && !t.IsArchived).ToList(),
-                DevelopmentTasks = tasks.Where(t => t.Status == TaskStatus.Development && !t.IsArchived).ToList(),
-                ReviewTasks = tasks.Where(t => t.Status == TaskStatus.Review && !t.IsArchived).ToList(),
-                MergeTasks = tasks.Where(t => t.Status == TaskStatus.Merge && !t.IsArchived).ToList(),
-                DoneTasks = tasks.Where(t => t.Status == TaskStatus.Done && !t.IsArchived).ToList()
-            };
+			// Combine and remove duplicates (in case user created a task and assigned it to themselves)
+			var tasks = myTasks.Union(assignedTasks).DistinctBy(t => t.Id).ToList();
 
-            return View(boardModel);
-        }
+			var boardModel = new TaskBoardViewModel
+			{
+				ToDoTasks = tasks.Where(t => t.Status == TaskStatus.ToDo && !t.IsArchived).ToList(),
+				DevelopmentTasks = tasks.Where(t => t.Status == TaskStatus.Development && !t.IsArchived).ToList(),
+				ReviewTasks = tasks.Where(t => t.Status == TaskStatus.Review && !t.IsArchived).ToList(),
+				MergeTasks = tasks.Where(t => t.Status == TaskStatus.Merge && !t.IsArchived).ToList(),
+				DoneTasks = tasks.Where(t => t.Status == TaskStatus.Done && !t.IsArchived).ToList()
+			};
 
-        // Task Details
-        [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> Details(int id)
+			return View(boardModel);
+		}
+
+		// Task Details
+		[HttpGet]
+        public async Task<IActionResult> Details(int id)
         {
             var task = await _taskService.GetTaskByIdAsync(id);
 
@@ -54,7 +59,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
 
         // Create Task - GET
         [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> Create()
+        public async Task<IActionResult> Create()
         {
             var users = await _userService.GetAllUsersAsync();
             ViewBag.Users = users;
@@ -64,7 +69,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
         // Create Task - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async System.Threading.Tasks.Task<IActionResult> Create(TaskViewModel model)
+        public async Task<IActionResult> Create(TaskViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +94,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
 
         // Edit Task - GET
         [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var task = await _taskService.GetTaskByIdAsync(id);
 
@@ -107,7 +112,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
         // Edit Task - POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async System.Threading.Tasks.Task<IActionResult> Edit(int id, TaskViewModel model)
+        public async Task<IActionResult> Edit(int id, TaskViewModel model)
         {
             if (id != model.Id)
             {
@@ -138,7 +143,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
         // Delete Task
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async System.Threading.Tasks.Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var (success, errorMessage) = await _taskService.DeleteTaskAsync(id);
 
@@ -156,7 +161,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
 
         // My Tasks
         [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> MyTasks()
+        public async Task<IActionResult> MyTasks()
         {
             var tasks = await _taskService.GetMyTasksAsync();
             return View(tasks);
@@ -164,7 +169,7 @@ namespace Final_Grp6_PROG3340_UI.Controllers
 
         // Assigned Tasks
         [HttpGet]
-        public async System.Threading.Tasks.Task<IActionResult> AssignedTasks()
+        public async Task<IActionResult> AssignedTasks()
         {
             var tasks = await _taskService.GetAssignedTasksAsync();
             return View(tasks);

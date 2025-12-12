@@ -117,8 +117,77 @@
 </div>
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
     <script>
-        // Placeholder for future SignalR real-time updates
-        // TODO: Implement SignalR connection and listen for task updates
+        // ============================
+        // SignalR Connection
+        // ============================
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/taskhub") // must match your hub route
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start().catch(err => console.error("SignalR Error:", err));
+
+
+        // ============================
+        // Utility Helpers
+        // ============================
+        function showToast(message) {
+            const toastHtml = `
+                <div class="toast align-items-center text-bg-dark border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>`;
+
+            const container = document.getElementById("signalr-toast-container");
+            container.insertAdjacentHTML("beforeend", toastHtml);
+
+            const toastEl = container.lastElementChild;
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+
+        function refreshBoard() {
+            location.reload();
+        }
+
+
+        // ============================
+        // SignalR Event Listeners
+        // ============================
+
+        // 1. Task Created (all users)
+        connection.on("TaskCreated", (msg) => {
+            showToast(msg);
+            refreshBoard(); // replace with partial DOM update if you want
+        });
+
+        // 2. Task Deleted (all users)
+        connection.on("TaskDeleted", (msg) => {
+            showToast(msg);
+            refreshBoard();
+        });
+
+        // 3. Task Status Updated (creator only)
+        connection.on("TaskStatusUpdated", (msg) => {
+            showToast(msg);
+            refreshBoard();
+        });
+
+        // 4. Task Assigned (assignee only)
+        connection.on("TaskAssigned", (msg) => {
+            showToast(msg);
+            refreshBoard();
+        });
     </script>
+
+    <!-- Toast Container -->
+    <div id="signalr-toast-container"
+         style="position: fixed; top: 1rem; right: 1rem; z-index: 2000"></div>
 }
